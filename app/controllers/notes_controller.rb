@@ -17,7 +17,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
-    
+
     if @note.update(notes_params)
       redirect_to notes_path
     else
@@ -25,6 +25,12 @@ class NotesController < ApplicationController
     end
   end
   
+  def destroy
+    Note.find(params[:id]).destroy
+    redirect_to notes_path
+  end
+
+
   def create
     @note = Note.new(notes_params)
 
